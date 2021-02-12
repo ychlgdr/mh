@@ -136,16 +136,6 @@
       console.log(textIndex)
     }, false)
 
-    canvas.addEventListener('touchstart', function (e) {
-      alert("test")
-      textIndex++
-      if (textIndex >= texts.length) {
-        textIndex--
-        return
-      }
-      text = texts[textIndex]
-      console.log(textIndex)
-    }, false)
   }
 
   function init() {
