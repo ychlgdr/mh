@@ -1,6 +1,6 @@
-;(function (window) {
+; (function (window) {
   window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-  window.webkitRequestAnimationFrame || window.msRequestAnimationFrame
+    window.webkitRequestAnimationFrame || window.msRequestAnimationFrame
 
   const FRAME_RATE = 60
   const PARTICLE_NUM = 2000
@@ -19,7 +19,7 @@
     textIndex = 0,
     textSize = 70
 
-  function draw () {
+  function draw() {
     ctx.clearRect(0, 0, CANVASWIDTH, CANVASHEIGHT)
     ctx.fillStyle = 'rgb(255, 255, 255)'
     ctx.textBaseline = 'middle'
@@ -40,7 +40,7 @@
     window.requestAnimationFrame(draw)
   }
 
-  function particleText (imgData) {
+  function particleText(imgData) {
     // 点坐标获取
     var pxls = []
     for (var w = CANVASWIDTH; w > 0; w -= 3) {
@@ -80,7 +80,7 @@
         p.inText = true
         p.fadeIn()
         p.draw(ctx)
-      } catch (e) {}
+      } catch (e) { }
     }
     for (var i = 0; i < particles.length; i++) {
       var p = particles[i]
@@ -104,7 +104,7 @@
     }
   }
 
-  function setDimensions () {
+  function setDimensions() {
     canvas.width = CANVASWIDTH
     canvas.height = CANVASHEIGHT
     canvas.style.position = 'absolute'
@@ -115,7 +115,7 @@
     canvas.style.marginTop = window.innerHeight * .15 + 'px'
   }
 
-  function event () {
+  function event() {
     document.addEventListener('click', function (e) {
       textIndex++
       if (textIndex >= texts.length) {
@@ -127,6 +127,16 @@
     }, false)
 
     document.addEventListener('touchstart', function (e) {
+      textIndex++
+      if (textIndex >= texts.length) {
+        textIndex--
+        return
+      }
+      text = texts[textIndex]
+      console.log(textIndex)
+    }, false)
+
+    canvas.addEventListener('touchstart', function (e) {
       alert("test")
       textIndex++
       if (textIndex >= texts.length) {
@@ -138,7 +148,7 @@
     }, false)
   }
 
-  function init () {
+  function init() {
     canvas = document.getElementById(CANVASID)
     if (canvas === null || !canvas.getContext) {
       return
@@ -155,7 +165,7 @@
   }
 
   class Particle {
-    constructor (canvas) {
+    constructor(canvas) {
       let spread = canvas.height
       let size = Math.random() * 1.2
       // 速度
@@ -182,26 +192,26 @@
       this.fadingOut = true
       this.fadingIn = true
     }
-    fadeIn () {
+    fadeIn() {
       this.fadingIn = this.opacity > this.opacityTresh ? false : true
       if (this.fadingIn) {
         this.opacity += this.fadeInRate
-      }else {
+      } else {
         this.opacity = 1
       }
     }
-    fadeOut () {
+    fadeOut() {
       this.fadingOut = this.opacity < 0 ? false : true
       if (this.fadingOut) {
         this.opacity -= this.fadeOutRate
         if (this.opacity < 0) {
           this.opacity = 0
         }
-      }else {
+      } else {
         this.opacity = 0
       }
     }
-    draw (ctx) {
+    draw(ctx) {
       ctx.fillStyle = 'rgba(226,225,142, ' + this.opacity + ')'
       ctx.beginPath()
       ctx.arc(this.x, this.y, this.size, 0, RADIUS, true)
@@ -209,14 +219,14 @@
       ctx.fill()
     }
   }
-  
+
   var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-    if(!isChrome){
-      $('#iframeAudio').remove()
+  if (!isChrome) {
+    $('#iframeAudio').remove()
   }
-  
+
   // setTimeout(() => {
-    init()  
+  init()
   // }, 4000);
   // mp3.play()
 })(window)
