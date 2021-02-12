@@ -145,13 +145,22 @@
     }
     ctx = canvas.getContext('2d')
     setDimensions()
-    event()
+    //event()
 
     for (var i = 0; i < PARTICLE_NUM; i++) {
       particles[i] = new Particle(canvas)
     }
 
     draw()
+
+    setInterval(function () {
+      textIndex++
+      if (textIndex >= texts.length) {
+        textIndex--
+        return
+      }
+      text = texts[textIndex]
+    }, 4000);
   }
 
   class Particle {
