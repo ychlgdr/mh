@@ -9,7 +9,7 @@
   const CANVASHEIGHT = 150
   const CANVASID = 'canvas'
 
-  let texts = ['辉姐', '看这不停闪烁的', '星空', '你有在', '和我看着', '同一颗', '星星吗 ?', 'HAPPY', 'VALENTINE\'S', 'DAY', 'I MISS YOU']
+  let texts = ['亲爱的辉姐', '看这不停闪烁的', '星空', '你有在', '和我看', '同一颗', '星星吗 ?', 'HAPPY', 'VALENTINE\'S', 'DAY', 'I MISS YOU']
 
   let canvas,
     ctx,
@@ -127,6 +127,7 @@
     }, false)
 
     document.addEventListener('touchstart', function (e) {
+      alert("test")
       textIndex++
       if (textIndex >= texts.length) {
         textIndex--
