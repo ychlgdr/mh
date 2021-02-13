@@ -9,7 +9,7 @@
   const CANVASHEIGHT = 150
   const CANVASID = 'canvas'
 
-  let texts = ['亲爱的辉姐', '看这不停闪烁的', '星空', '你有在', '和我看', '同一颗', '星星吗 ?', 'HAPPY', 'VALENTINE\'S', 'DAY', 'I MISS YOU']
+  let texts = ['亲爱的辉姐', '看这不停闪烁的', '星空','你有在和我看', '同一颗', '星星吗 ?', 'HAPPY', 'VALENTINE\'S', 'DAY', 'I MISS YOU']
 
   let canvas,
     ctx,
@@ -145,7 +145,7 @@
     }
     ctx = canvas.getContext('2d')
     setDimensions()
-    //event()
+    event()
 
     for (var i = 0; i < PARTICLE_NUM; i++) {
       particles[i] = new Particle(canvas)
@@ -153,14 +153,14 @@
 
     draw()
 
-    setInterval(function () {
+   /* setInterval(function () {
       textIndex++
       if (textIndex >= texts.length) {
         textIndex--
         return
       }
       text = texts[textIndex]
-    }, 4000);
+    }, 4000);*/
   }
 
   class Particle {
